@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+//importing react libraries aswell as react router dom, and all the components
+import React from "react";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import CurrencyConverter from "./components/CurrencyConverter";
+import CardGame from "./components/CardGame";
+import DropdownMenu from "./components/DropdownMenu";
+import Header from "./components/Header"
 
+//using react router to display either of the components when they are selected in the dropdown
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <>
+        <Header />
+        <DropdownMenu />
+        <Switch>
+          <Route path="/currencyConverter" component={CurrencyConverter} />
+          <Route path="/cardGame" component={CardGame} />
+        </Switch>
+      </>
+    </Router>
   );
 }
 
